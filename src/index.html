@@ -3,11 +3,232 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/input.css" />
+    <title>Forkify || Search over 1,000,000 Recipies</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="input.css" />
     <script type="module" src="js/main.js"></script>
+
+    <style>
+      body {
+        font-family: 'Nunito Sans', sans-serif;
+      }
+    </style>
   </head>
-  <body>
-    <h3 class="text-2xl font-bold text-gray-500">HRM</h3>
+  <body class="h-full text-[#615551]">
+    <main class="overflow-hidden">
+      <!--  -->
+      <header class="flex items-center justify-between bg-[#f9f5f3] py-4">
+        <img src="img/logo.png" alt="logo" class="ml-5 h-[3rem]" />
+
+        <form
+          class="ml-4 flex items-center rounded-[10rem] bg-white transition-all duration-[.3s]"
+        >
+          <input
+            type="text"
+            placeholder="Search over 1,000,000 Recipies"
+            class="ml-8 border-none bg-white bg-none caret-black outline-none lg:w-[18rem]"
+          />
+          <button
+            class="flex items-center rounded-[10rem] bg-gradient-to-br from-grad1 to-primary px-[2rem] py-[0.5rem] text-[1rem] font-[600] uppercase text-white transition-all duration-[.3s] hover:scale-105"
+          >
+            <svg class="h-[2.25rem] w-[2.25rem] fill-white pr-2">
+              <use href="img/icons.svg#icon-search"></use>
+            </svg>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <nav>
+          <ul class="flex h-full list-none">
+            <li class="">
+              <button
+                class="flex h-full cursor-pointer items-center bg-none px-6 text-[0.8rem] font-bold uppercase transition-all duration-[.3s] hover:bg-[#f2efee]"
+              >
+                <svg class="mr-2 h-[1.5rem] w-[1.5rem] fill-[#f38e82]">
+                  <use href="img/icons.svg#icon-edit"></use>
+                </svg>
+                <span>Add Recipe</span>
+              </button>
+            </li>
+
+            <li class="">
+              <button
+                class="flex h-full cursor-pointer items-center bg-none px-6 text-[0.8rem] font-bold uppercase transition-all duration-[.3s] hover:bg-[#f2efee]"
+              >
+                <svg class="mr-2 h-[1.5rem] w-[1.5rem] fill-[#f38e82]">
+                  <use href="img/icons.svg#icon-bookmark"></use>
+                </svg>
+                <span>Bookmarks</span>
+              </button>
+
+              <div
+                class="hidden w-[40rem] bg-white py-4 ring ring-gray-600 ring-opacity-10 ring-offset-2 ring-offset-gray-500 transition-all delay-[.2s] duration-[.3s]"
+              >
+                <ul class="list-none"></ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Search Results -->
+
+      <div class="flex">
+        <div class="flex h-[100vh] w-[30vw] flex-col py-12">
+          <!-- Results -->
+          <ul class="mb-8 list-none"></ul>
+          <!-- pagination -->
+          <div class="mt-auto px-14"></div>
+        </div>
+
+        <!-- Recipe -->
+        <div class="h-[100vh] w-[100vw] bg-[#f9f5f3]">
+          <!-- message -->
+          <div class="mx-auto my-0 flex max-w-[40rem] px-[4rem] py-[5rem]">
+            <div>
+              <svg class="h-[3rem] w-[3rem] fill-[#f38e82]">
+                <use href="img/icons.svg#icon-smile"></use>
+              </svg>
+            </div>
+            <p class="leading-1.5 ml-6 text-[1.4rem] font-semibold">
+              Start by searching for a recipe or an ingredient. Have fun!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- overlay hidden -->
+      <div
+        class="fixed left-0 top-0 z-50 hidden h-full w-full bg-[#00000066] blur-sm transition-all duration-[.5s]"
+      ></div>
+
+      <!-- Recipe add Hidden -->
+      <div
+        class="fixed left-1/2 top-1/2 z-50 hidden w-11/12 max-w-screen-md -translate-x-1/2 -translate-y-1/2 transform rounded-md bg-white px-8 py-6 shadow-lg transition-all duration-500"
+      >
+        <button
+          class="font-inherit absolute right-2 top-2 cursor-pointer border-none bg-none text-2xl text-inherit"
+        >
+          x
+        </button>
+
+        <!-- Upload data -->
+        <form class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="grid grid-cols-[1fr,2.8fr] items-center gap-6">
+            <h3
+              class="text-2.25rem col-start-1 col-end-[-1] mb-4 font-bold uppercase"
+            >
+              Recipe Data
+            </h3>
+            <label class="text-1.5rem font-semibold">Title</label>
+            <input
+              type="text"
+              required
+              value="Test23"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">URL</label>
+            <input
+              type="text"
+              required
+              value="Test23"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">image URL</label>
+            <input
+              type="text"
+              required
+              value="Test23"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Publisher</label>
+            <input
+              type="text"
+              required
+              value="Test23"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Prep time</label>
+            <input
+              type="number"
+              required
+              value="23"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Servings</label>
+            <input
+              type="number"
+              required
+              value="23"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+          </div>
+
+          <div class="grid grid-cols-[1fr,2.8fr] items-center gap-6">
+            <h3
+              class="text-2.25rem col-start-1 col-end-[-1] mb-4 font-bold uppercase"
+            >
+              INGREDIENTS
+            </h3>
+            <label class="text-1.5rem font-semibold">Ingredient 1</label>
+            <input
+              type="text"
+              required
+              value="0.5,kg,Rice"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Ingredient 2</label>
+            <input
+              type="text"
+              required
+              value="1,,Avocado"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Ingredient 3</label>
+            <input
+              type="text"
+              required
+              value=",,salt"
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Ingredient 4</label>
+            <input
+              type="text"
+              required
+              value=""
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Ingredient 5</label>
+            <input
+              type="text"
+              required
+              value=""
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+            <label class="text-1.5rem font-semibold">Ingredient 6</label>
+            <input
+              type="text"
+              required
+              value=""
+              class="px-1rem py-0.8rem text-1.5rem duration-0.2s rounded-lg border border-white transition-all focus:border-[#f38e82] focus:bg-[#f9f5f3] focus:outline-none"
+            />
+          </div>
+
+          <button
+            class="col-start-1 col-end-3 flex items-center justify-self-center rounded-full bg-gradient-to-br from-grad1 to-primary px-6 py-2 text-base font-semibold uppercase text-white transition-all duration-300 hover:scale-105"
+          >
+            <svg class="h-6 w-6 fill-white pr-2">
+              <use href="img/icons.svg#icon-upload-cloud"></use>
+            </svg>
+            <span>Upload</span>
+          </button>
+        </form>
+      </div>
+    </main>
   </body>
 </html>
